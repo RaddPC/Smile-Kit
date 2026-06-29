@@ -13,7 +13,7 @@ const CONFIG = {
   nombreEmpresa: "SmileKit",
 
   // Nombre del producto que se vende
-  nombreProducto: "SmileKit Blanqueador Dental",
+  nombreProducto: "Smile Kit – Color Corrective Teeth Spray (60 mL)",
 
   // Precio unitario en número (sin puntos ni símbolos)
   precioUnitario: 49900,
