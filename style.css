@@ -372,7 +372,7 @@ input { font-family: inherit; }
 .reviews__inner { max-width: var(--max-width); margin: 0 auto; }
 .reviews__title { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 12px; }
 .reviews__subtitle { color: var(--color-ink-soft); max-width: 500px; margin: 0 auto 36px; }
-.reviews__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.reviews__grid { display: flex; justify-content: center; gap: 22px; }
 .reviews__card img { border-radius: var(--radius); width: 100%; }
 
 @media (max-width: 760px) {
