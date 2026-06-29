@@ -254,7 +254,8 @@ input { font-family: inherit; }
   margin-bottom: 22px;
   aspect-ratio: 1/1;
 }
-.slide__media img { width: 100%; height: 100%; object-fit: cover; }
+.slide__media img,
+.slide__media video { width: 100%; height: 100%; object-fit: cover; }
 
 .slide__text h2 {
   font-size: 1.35rem;
