@@ -327,31 +327,59 @@ input { font-family: inherit; }
 }
 .checkout__form input:focus { border-color: var(--color-accent); }
 
-.qty-control {
-  display: flex;
-  align-items: center;
-  width: fit-content;
+.combo-group { display: flex; flex-direction: column; gap: 10px; }
+.combo-group__label {
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+.combo-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.combo-card {
+  position: relative;
+  background: #ffffff;
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-sm);
-  overflow: hidden;
+  padding: 16px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: border-color .15s ease, transform .15s ease;
 }
-.qty-control button {
+.combo-card:hover { transform: translateY(-2px); }
+.combo-card.selected {
+  border-color: var(--color-accent);
+  border-width: 2px;
   background: var(--color-bg-soft);
-  width: 42px;
-  height: 42px;
-  font-size: 1.2rem;
+}
+.combo-card__tag {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-gold);
+  color: #4a3000;
+  font-size: .62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.combo-card__units {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+.combo-card__price {
+  font-size: .92rem;
   font-weight: 700;
   color: var(--color-ink);
-}
-.qty-control button:hover { background: var(--color-border); }
-.qty-control input {
-  width: 50px;
-  text-align: center;
-  border: none;
-  border-left: 1.5px solid var(--color-border);
-  border-right: 1.5px solid var(--color-border);
-  border-radius: 0;
-  font-weight: 700;
 }
 
 .checkout__total {
