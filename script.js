@@ -7,7 +7,7 @@
 const CONFIG = {
   // Número de WhatsApp SIN signos ni espacios, con código de país.
   // Ejemplo Colombia: "573001234567"
-  whatsappNumber: "573001234567",
+  whatsappNumber: "573332420240",
 
   // Nombre de la empresa / marca (se usa en el mensaje de WhatsApp)
   nombreEmpresa: "SmileKit",
@@ -16,13 +16,13 @@ const CONFIG = {
   nombreProducto: "SmileKit Blanqueador Dental",
 
   // Precio unitario en número (sin puntos ni símbolos)
-  precioUnitario: 89900,
+  precioUnitario: 49900,
 
   // Símbolo / formato de moneda mostrado en pantalla
   moneda: "$",
 
   // Mensaje que se abre al tocar el botón flotante de WhatsApp (sin pedido)
-  mensajeFlotante: "Hola, quiero más información sobre SmileKit 🦷✨"
+  mensajeFlotante: "Hola, quiero más información sobre el producto SmileKit 🦷✨"
 };
 
 /* =========== 2. UTILIDADES =========== */
