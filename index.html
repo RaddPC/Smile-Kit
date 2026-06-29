@@ -168,14 +168,27 @@ Ideal antes de una reunión, una cita, una fiesta o una sesión de fotos.</p>
           Ciudad y dirección de envío
           <input type="text" id="direccion" placeholder="Ej: Bucaramanga, Calle 30 #10-20" required>
         </label>
-        <label>
-          Cantidad
-          <div class="qty-control">
-            <button type="button" id="qty-minus" aria-label="Restar cantidad">−</button>
-            <input type="number" id="cantidad" value="1" min="1" max="10" readonly>
-            <button type="button" id="qty-plus" aria-label="Sumar cantidad">+</button>
+       
+        <div class="combo-group">
+          <span class="combo-group__label">Elegí tu promoción</span>
+          <div class="combo-options" id="combo-options">
+            <button type="button" class="combo-card" data-units="1" data-price="49900">
+              <span class="combo-card__units">x1</span>
+              <span class="combo-card__price">$49.900</span>
+            </button>
+            <button type="button" class="combo-card combo-card--popular" data-units="2" data-price="69900">
+              <span class="combo-card__tag">Más vendido</span>
+              <span class="combo-card__units">x2</span>
+              <span class="combo-card__price">$69.900</span>
+            </button>
+            <button type="button" class="combo-card" data-units="3" data-price="84900">
+              <span class="combo-card__tag">Mejor precio</span>
+              <span class="combo-card__units">x3</span>
+              <span class="combo-card__price">$84.900</span>
+            </button>
           </div>
-        </label>
+          <input type="hidden" id="cantidad" value="1">
+        </div>
 
         <div class="checkout__total">
           <span>Total a pagar</span>
