@@ -79,36 +79,43 @@ document.addEventListener("DOMContentLoaded", () => {
   bindClick("policies-overlay", closePolicies);
 
   /* =========== 4. CHECKOUT: CANTIDAD Y TOTAL =========== */
+/* =========== 4. CHECKOUT: SELECCIÓN DE COMBO Y TOTAL =========== */
   const cantidadInput = document.getElementById("cantidad");
   const totalEl = document.getElementById("checkout-total");
-  const btnMinus = document.getElementById("qty-minus");
-  const btnPlus = document.getElementById("qty-plus");
+  const comboCards = document.querySelectorAll(".combo-card");
+
+  let comboSeleccionado = { units: 1, price: CONFIG.precioUnitario };
 
   function actualizarTotal() {
-    if (!cantidadInput || !totalEl) return;
-    const cantidad = parseInt(cantidadInput.value, 10) || 1;
-    const total = cantidad * CONFIG.precioUnitario;
-    totalEl.textContent = formatearPrecio(total);
+    if (!totalEl) return;
+    totalEl.textContent = formatearPrecio(comboSeleccionado.price);
+    if (cantidadInput) cantidadInput.value = comboSeleccionado.units;
   }
 
-  if (btnMinus && btnPlus && cantidadInput) {
-    btnMinus.addEventListener("click", () => {
-      let val = parseInt(cantidadInput.value, 10) || 1;
-      if (val > 1) val--;
-      cantidadInput.value = val;
-      actualizarTotal();
+  if (comboCards.length > 0) {
+    comboCards.forEach(card => {
+      card.addEventListener("click", () => {
+        comboCards.forEach(c => c.classList.remove("selected"));
+        card.classList.add("selected");
+        comboSeleccionado = {
+          units: parseInt(card.dataset.units, 10),
+          price: parseInt(card.dataset.price, 10)
+        };
+        actualizarTotal();
+      });
     });
 
-    btnPlus.addEventListener("click", () => {
-      let val = parseInt(cantidadInput.value, 10) || 1;
-      if (val < 10) val++;
-      cantidadInput.value = val;
-      actualizarTotal();
-    });
-
+    const comboPopular = document.querySelector(".combo-card--popular");
+    if (comboPopular) {
+      comboPopular.classList.add("selected");
+      comboSeleccionado = {
+        units: parseInt(comboPopular.dataset.units, 10),
+        price: parseInt(comboPopular.dataset.price, 10)
+      };
+    }
     actualizarTotal();
   } else {
-    console.warn("[SmileKit] No se encontraron todos los controles de cantidad del checkout.");
+    console.warn("[SmileKit] No se encontraron las tarjetas de combo del checkout.");
   }
 
   /* =========== 5. ENVÍO DEL FORMULARIO A WHATSAPP =========== */
@@ -124,9 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const nombre = nombreEl ? nombreEl.value.trim() : "";
       const telefono = telefonoEl ? telefonoEl.value.trim() : "";
       const direccion = direccionEl ? direccionEl.value.trim() : "";
-      const cantidad = cantidadInput ? (parseInt(cantidadInput.value, 10) || 1) : 1;
-      const total = cantidad * CONFIG.precioUnitario;
-
+      const cantidad = comboSeleccionado.units;
+      const total = comboSeleccionado.price;
       if (!nombre || !telefono || !direccion) {
         alert("Por favor completá todos los campos antes de continuar.");
         return;
